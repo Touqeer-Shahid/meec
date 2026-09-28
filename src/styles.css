@@ -1,0 +1,228 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * MEEC design system.
+ * Brand: Blue #127DC2 (primary), Green #67BA45 (secondary accent),
+ * light off-white interface, deep navy contrast.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-contrast: var(--contrast);
+  --color-footer: var(--footer);
+
+  --shadow-soft: 0 1px 2px rgba(16, 58, 86, 0.04), 0 8px 24px -12px rgba(16, 58, 86, 0.14);
+  --shadow-card: 0 2px 6px rgba(16, 58, 86, 0.05), 0 18px 40px -20px rgba(16, 58, 86, 0.22);
+  --shadow-lift: 0 4px 10px rgba(16, 58, 86, 0.07), 0 30px 60px -24px rgba(16, 58, 86, 0.3);
+  --shadow-glass: 0 8px 32px -8px rgba(8, 81, 127, 0.28);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 46s linear infinite;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.982 0.004 247.9); /* #F8FAFC */
+  --foreground: oklch(0.222 0.021 258); /* #17202A */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.222 0.021 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.222 0.021 258);
+
+  --primary: oklch(0.573 0.128 245.3); /* #127DC2 */
+  --primary-foreground: oklch(1 0 0);
+  --primary-dark: oklch(0.462 0.107 245.7); /* #0B5F96 */
+  --primary-light: oklch(0.966 0.014 234); /* #EAF5FB */
+
+  --accent: oklch(0.727 0.171 138.5); /* #67BA45 */
+  --accent-foreground: oklch(0.222 0.021 258);
+  --accent-dark: oklch(0.611 0.147 139.8); /* #4F9634 */
+  --accent-light: oklch(0.968 0.026 137); /* #EDF8E9 */
+
+  --secondary: oklch(0.966 0.014 234);
+  --secondary-foreground: oklch(0.462 0.107 245.7);
+
+  --muted: oklch(0.966 0.005 247.9);
+  --muted-foreground: oklch(0.508 0.019 253); /* #5B6875 */
+
+  --destructive: oklch(0.577 0.219 27.3);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.914 0.008 232); /* #DCE5EB */
+  --input: oklch(0.914 0.008 232);
+  --ring: oklch(0.573 0.128 245.3);
+
+  --contrast: oklch(0.462 0.107 245.7); /* #0B5F96 */
+  --footer: oklch(0.398 0.093 246); /* #08517F — deep MEEC blue */
+
+  --gradient-brand: linear-gradient(135deg, #127dc2, #67ba45);
+  --gradient-blue: linear-gradient(135deg, #0b5f96, #127dc2);
+  --gradient-light: linear-gradient(135deg, #eaf5fb, #edf8e9);
+  --hero-overlay: linear-gradient(
+    90deg,
+    rgba(8, 81, 127, 0.93) 0%,
+    rgba(11, 95, 150, 0.68) 45%,
+    rgba(18, 125, 194, 0.18) 100%
+  );
+
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Mobile fix: clip horizontal overflow at the root element too.
+       body-only overflow-x:hidden is ignored by iOS Safari and some
+       Android browsers, letting wide decorative/absolutely-positioned
+       children (e.g. the logo marquee track, blurred glows) widen the
+       initial containing block so the page renders zoomed-out and
+       occupies only part of the mobile viewport. */
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 1024px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility glass-dark {
+  background-color: rgba(8, 81, 127, 0.42);
+  backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+@utility gradient-blue {
+  background-image: var(--gradient-blue);
+}
+
+@utility gradient-light {
+  background-image: var(--gradient-light);
+}
+
+@utility text-gradient-brand {
+  background-image: var(--gradient-brand);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
