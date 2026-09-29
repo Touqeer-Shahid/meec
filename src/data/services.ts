@@ -4,7 +4,7 @@ import civilImg from "@/assets/images/services/svc-civil.jpg";
 import surfaceImg from "@/assets/images/services/svc-surface.jpg";
 import equipmentImg from "@/assets/images/services/svc-equipment.jpg";
 import testingImg from "@/assets/images/services/svc-testing.jpg";
-import machineShopAsset from "@/assets/images/services/svg_machine_shop.png";
+import machineShopAsset from "@/assets/images/services/machine-shop.jpeg";
 import plantMaintenanceAsset from "@/assets/images/projects/pr-refinery-erection.jpeg";
 import ataAsset from "@/assets/images/projects/pr-scaffolding-grid.jpeg";
 import liftingAsset from "@/assets/images/projects/pr-shell-section-site.jpeg";

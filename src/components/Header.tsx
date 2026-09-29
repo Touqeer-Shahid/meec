@@ -15,7 +15,7 @@ const nav = [
   { label: "Equipment", to: "/equipment" },
   { label: "HSE & Quality", to: "/quality-safety" },
   { label: "Projects", to: "/projects" },
-  { label: "Opportunities", to: "/opportunities" },
+  { label: "Career", to: "/career" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
 ];

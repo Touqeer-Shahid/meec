@@ -20,7 +20,7 @@ import {
 import type { ReactNode } from "react";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { ButtonLink, Reveal, SectionHeading } from "@/components/ui-kit";
-import aboutImg from "@/assets/images/gallery/g-award-ceremony.jpeg";
+import aboutImg from "@/assets/images/gallery/about-img.jpeg";
 import { clients, ongoingClients } from "@/data/clients";
 import type { Project } from "@/data/projects";
 import { services, type Service } from "@/data/services";

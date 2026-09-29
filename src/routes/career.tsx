@@ -7,6 +7,7 @@ import { CTASection } from "@/components/sections";
 import { PageHero, Reveal, SectionHeading } from "@/components/ui-kit";
 import { vacancies } from "@/data/vacancies";
 import { cn } from "@/lib/utils";
+import { btnStyles } from "@/components/ui-kit";
 
 type Partition = "apply" | "vacancies";
 
@@ -15,17 +16,17 @@ const partitions: { label: string; value: Partition }[] = [
   { label: "Vacancies", value: "vacancies" },
 ];
 
-export const Route = createFileRoute("/opportunities")({
+export const Route = createFileRoute("/career")({
   component: Opportunities,
   head: () => ({
     meta: [
-      { title: "New Opportunities | Careers at MEEC" },
+      { title: "New Career Opportunities | Careers at MEEC" },
       {
         name: "description",
         content:
           "Apply online to join Masha Allah Engineering Enterprises and view current vacancies across our engineering, project, machine shop and QHSE teams.",
       },
-      { property: "og:title", content: "New Opportunities | Careers at MEEC" },
+      { property: "og:title", content: "New Career Opportunities | Careers at MEEC" },
       {
         property: "og:description",
         content:
@@ -33,9 +34,9 @@ export const Route = createFileRoute("/opportunities")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "/opportunities" },
+      { property: "og:url", content: "/career" },
     ],
-    links: [{ rel: "canonical", href: "/opportunities" }],
+    links: [{ rel: "canonical", href: "/career" }],
   }),
 });
 
@@ -47,9 +48,9 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
       <Reveal>
         <div className="rounded-2xl border border-border bg-white/75 p-10 text-center backdrop-blur-sm">
           <Briefcase className="mx-auto size-8 text-primary" />
-          <h3 className="mt-4 text-lg">Currently, there are no available vacancies.</h3>
+          <h3 className="mt-4 text-lg">Currently, there are Several vacancies available.</h3>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            New openings are published on this page as they become available. You are welcome to
+            You are welcome to
             submit an online application so your details are on file with our HR team.
           </p>
           <button
@@ -149,6 +150,10 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
   );
 }
 
+const handleCopyCareerLink = async () => {
+  await navigator.clipboard.writeText("https://meec.com.pk/career");
+};
+
 function Opportunities() {
   const [active, setActive] = useState<Partition>("apply");
 
@@ -157,9 +162,9 @@ function Opportunities() {
       <PageHero
         image={heroImg}
         eyebrow="Careers"
-        title="New Opportunities"
+        title="New Career Opportunities"
         text="Apply online to join MEEC, or review the vacancies currently open across our engineering, project, machine shop and QHSE teams."
-        breadcrumbs={[{ label: "Home", to: "/" }, { label: "New Opportunities" }]}
+        breadcrumbs={[{ label: "Home", to: "/" }, { label: "New Career Opportunities" }]}
       />
 
       <section className="py-14 lg:py-16">
@@ -182,6 +187,10 @@ function Opportunities() {
               </button>
             ))}
           </div>
+          <br></br>
+          <button onClick={handleCopyCareerLink} className={btnStyles.accent}>
+                    Copy Page Link
+                </button>
 
           {active === "apply" ? (
             <div className="mt-12 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
@@ -200,6 +209,7 @@ function Opportunities() {
                   Complete the application form and your details will be sent directly to our HR
                   team on WhatsApp, where you can also attach your CV.
                 </p>
+                
               </div>
               <VacancyForm />
             </div>

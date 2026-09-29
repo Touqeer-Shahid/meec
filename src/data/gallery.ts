@@ -18,6 +18,14 @@ import strength_board from "@/assets/images/core_values/strength.jpeg";
 import mission_board from "@/assets/images/core_values/mission.jpeg";
 import philosophy_board from "@/assets/images/core_values/philosophy.jpeg";
 import vision_board from "@/assets/images/core_values/vision.jpeg";
+import p1 from "@/assets/images/gallery/post1.jpeg";
+import p2 from "@/assets/images/gallery/post2.jpeg";
+import p3 from "@/assets/images/gallery/post3.mp4";
+import p4 from "@/assets/images/gallery/post4.jpeg";
+import p5 from "@/assets/images/gallery/post5.jpeg";
+import p6 from "@/assets/images/gallery/post6.jpeg";
+import p7 from "@/assets/images/gallery/post8.jpeg";
+import p8 from "@/assets/images/gallery/post9.jpeg";
 
 export const galleryCategories = ["All", "Projects", "Equipment", "HSE", "Team", "Videos"] as const;
 export type GalleryCategory = (typeof galleryCategories)[number];
@@ -107,6 +115,46 @@ export const gallery: GalleryItem[] = [
   {
     src: teamOnsite,
     alt: "MEEC trade team assembled at a plant work front",
+    category: "Team",
+  },
+  {
+    src: p1,
+    alt: "",
+    category: "Team",
+  },
+  {
+    src: p2,
+    alt: "",
+    category: "Projects",
+  },
+  // {
+  //   src: p3,
+  //   alt: "",
+  //   category: "Projects",
+  // },
+  {
+    src: p4,
+    alt: "",
+    category: "Team",
+  },
+  {
+    src: p5,
+    alt: "",
+    category: "Team",
+  },
+  {
+    src: p6,
+    alt: "",
+    category: "Team",
+  },
+  {
+    src: p7,
+    alt: "",
+    category: "Team",
+  },
+  {
+    src: p8,
+    alt: "",
     category: "Team",
   },
   // {

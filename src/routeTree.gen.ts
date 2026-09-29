@@ -11,11 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CareerRouteImport } from './routes/career'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EquipmentRouteImport } from './routes/equipment'
 import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as QualitySafetyRouteImport } from './routes/quality-safety'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
@@ -38,6 +38,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClientsRoute = ClientsRouteImport.update({
   id: '/clients',
   path: '/clients',
@@ -56,11 +61,6 @@ const EquipmentRoute = EquipmentRouteImport.update({
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OpportunitiesRoute = OpportunitiesRouteImport.update({
-  id: '/opportunities',
-  path: '/opportunities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QualitySafetyRoute = QualitySafetyRouteImport.update({
@@ -122,11 +122,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
-  '/opportunities': typeof OpportunitiesRoute
   '/quality-safety': typeof QualitySafetyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/industries/$id': typeof IndustriesIdRoute
@@ -142,11 +142,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
-  '/opportunities': typeof OpportunitiesRoute
   '/quality-safety': typeof QualitySafetyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/industries/$id': typeof IndustriesIdRoute
@@ -163,11 +163,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
   '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
-  '/opportunities': typeof OpportunitiesRoute
   '/quality-safety': typeof QualitySafetyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/industries/$id': typeof IndustriesIdRoute
@@ -185,11 +185,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/career'
     | '/clients'
     | '/contact'
     | '/equipment'
     | '/gallery'
-    | '/opportunities'
     | '/quality-safety'
     | '/request-a-quote'
     | '/industries/$id'
@@ -205,11 +205,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/career'
     | '/clients'
     | '/contact'
     | '/equipment'
     | '/gallery'
-    | '/opportunities'
     | '/quality-safety'
     | '/request-a-quote'
     | '/industries/$id'
@@ -225,11 +225,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/career'
     | '/clients'
     | '/contact'
     | '/equipment'
     | '/gallery'
-    | '/opportunities'
     | '/quality-safety'
     | '/request-a-quote'
     | '/industries/$id'
@@ -246,11 +246,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareerRoute: typeof CareerRoute
   ClientsRoute: typeof ClientsRoute
   ContactRoute: typeof ContactRoute
   EquipmentRoute: typeof EquipmentRoute
   GalleryRoute: typeof GalleryRoute
-  OpportunitiesRoute: typeof OpportunitiesRoute
   QualitySafetyRoute: typeof QualitySafetyRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
   IndustriesIdRoute: typeof IndustriesIdRoute
@@ -280,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clients': {
       id: '/clients'
       path: '/clients'
@@ -306,13 +313,6 @@ declare module '@tanstack/react-router' {
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/opportunities': {
-      id: '/opportunities'
-      path: '/opportunities'
-      fullPath: '/opportunities'
-      preLoaderRoute: typeof OpportunitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quality-safety': {
@@ -398,11 +398,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareerRoute: CareerRoute,
   ClientsRoute: ClientsRoute,
   ContactRoute: ContactRoute,
   EquipmentRoute: EquipmentRoute,
   GalleryRoute: GalleryRoute,
-  OpportunitiesRoute: OpportunitiesRoute,
   QualitySafetyRoute: QualitySafetyRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
   IndustriesIdRoute: IndustriesIdRoute,
