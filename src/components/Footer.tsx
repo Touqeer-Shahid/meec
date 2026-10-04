@@ -3,6 +3,7 @@ import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/images/logo/logo-white.png";
 import { services } from "@/data/services";
 import { company } from "@/data/site";
+import { SocialLinks } from "@/components/SocialLinks";
 import "./style.css";
 
 export function Footer() {
@@ -41,6 +42,7 @@ export function Footer() {
               services company established in 2003, delivering multidisciplinary engineering,
               fabrication, erection and construction works.
             </p>
+            <SocialLinks variant="footer" className="mt-6" />
           </div>
 
           <div>
@@ -106,7 +108,21 @@ export function Footer() {
               </li>
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
-                <span>{company.headOffice}</span>
+                <span>
+                  <span className="block text-xs font-bold tracking-widest text-white uppercase">
+                    Office Address
+                  </span>
+                  {company.headOffice}
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
+                <span>
+                  <span className="block text-xs font-bold tracking-widest text-white uppercase">
+                    Warehouse Address
+                  </span>
+                  Opposite FAST University, Yousuf Goth, Karachi
+                </span>
               </li>
             </ul>
           </div>

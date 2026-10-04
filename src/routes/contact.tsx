@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/forms";
 import { CTASection } from "@/components/sections";
 import { PageHero, Reveal, SectionHeading } from "@/components/ui-kit";
 import heroImg from "@/assets/images/services/svc-equipment.jpg";
+import { SocialLinks } from "@/components/SocialLinks";
 import { company } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
@@ -97,6 +98,11 @@ function Contact() {
               </Reveal>
             ))}
           </ul>
+
+          <div className="mt-8 flex flex-col items-start gap-3 rounded-2xl border border-border bg-white/75 p-5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm font-bold text-foreground">Follow MEEC on social media</p>
+            <SocialLinks />
+          </div>
 
           <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-14">
             <div>

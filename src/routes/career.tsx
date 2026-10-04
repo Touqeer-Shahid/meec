@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Briefcase, ChevronDown, MapPin } from "lucide-react";
+import { Briefcase, Check, ChevronDown, Link2, MapPin } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/images/hero/hero-industrial.jpg";
 import { VacancyForm } from "@/components/forms";
@@ -150,9 +150,48 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
   );
 }
 
-const handleCopyCareerLink = async () => {
-  await navigator.clipboard.writeText("https://meec.com.pk/career");
-};
+/** Copies the current page URL, so the link always matches the deployed domain. */
+function CopyCareerLinkButton() {
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+
+  const copy = async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        // Fallback for browsers without the async Clipboard API.
+        const ta = document.createElement("textarea");
+        ta.value = url;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        if (!ok) throw new Error("copy failed");
+      }
+      setStatus("copied");
+    } catch {
+      setStatus("failed");
+    }
+    window.setTimeout(() => setStatus("idle"), 2500);
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <button type="button" onClick={copy} className={cn(btnStyles.outline, "max-w-full")}>
+        {status === "copied" ? <Check className="size-4" /> : <Link2 className="size-4" />}
+        {status === "copied" ? "Link Copied!" : "Copy Career Form Link"}
+      </button>
+      <span role="status" aria-live="polite" className="text-xs text-muted-foreground">
+        {status === "copied" && "The career page link has been copied to your clipboard."}
+        {status === "failed" && "Could not copy automatically — please copy the link from the address bar."}
+      </span>
+    </div>
+  );
+}
 
 function Opportunities() {
   const [active, setActive] = useState<Partition>("apply");
@@ -187,10 +226,9 @@ function Opportunities() {
               </button>
             ))}
           </div>
-          <br></br>
-          <button onClick={handleCopyCareerLink} className={btnStyles.accent}>
-                    Copy Page Link
-                </button>
+          <div className="mt-6">
+            <CopyCareerLinkButton />
+          </div>
 
           {active === "apply" ? (
             <div className="mt-12 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">

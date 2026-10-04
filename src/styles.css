@@ -121,6 +121,16 @@
   }
 }
 
+/* Same distance as `marquee`, opposite direction (moves right). */
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

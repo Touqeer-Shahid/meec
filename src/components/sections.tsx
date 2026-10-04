@@ -426,8 +426,39 @@ export function ProjectsEmptyState() {
 
 /* ---------------------------- Client presentation ------------------------- */
 
+function MarqueeRow({ items, direction }: { items: typeof clients; direction: "left" | "right" }) {
+  // The list is rendered twice; the track moves exactly half its width so the loop is seamless.
+  const row = [...items, ...items];
+  return (
+    <div
+      className={cn(
+        "flex w-max items-center gap-4 motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center",
+        direction === "left"
+          ? "animate-[marquee_46s_linear_infinite]"
+          : "animate-[marquee-reverse_46s_linear_infinite]",
+      )}
+    >
+      {row.map((c, i) => (
+        <div
+          key={`${c.id}-${i}`}
+          aria-hidden={i >= items.length ? true : undefined}
+          className="flex h-28 w-52 shrink-0 items-center justify-center rounded-2xl border border-border bg-white/70 px-6 backdrop-blur-sm"
+        >
+          <img
+            src={c.logo}
+            alt={i >= items.length ? "" : c.name}
+            loading="lazy"
+            className="max-h-16 w-auto max-w-full object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function ClientLogoMarquee() {
-  const row = [...clients, ...clients];
+  // Second row shows the same official logos in reverse order so the rows don't mirror each other.
+  const reversed = [...clients].reverse();
   return (
     <section className="overflow-hidden py-20 lg:py-24">
       <div className="shell">
@@ -438,7 +469,7 @@ export function ClientLogoMarquee() {
           align="center"
         />
       </div>
-      <div className="relative mt-14">
+      <div className="relative mt-14 space-y-4 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent"
           aria-hidden="true"
@@ -447,21 +478,8 @@ export function ClientLogoMarquee() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent"
           aria-hidden="true"
         />
-        <div className="flex w-max animate-[marquee_46s_linear_infinite] items-center gap-4 motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
-          {row.map((c, i) => (
-            <div
-              key={`${c.id}-${i}`}
-              className="flex h-28 w-52 shrink-0 items-center justify-center rounded-2xl border border-border bg-white/70 px-6 backdrop-blur-sm"
-            >
-              <img
-                src={c.logo}
-                alt={c.name}
-                loading="lazy"
-                className="max-h-16 w-auto max-w-full object-contain"
-              />
-            </div>
-          ))}
-        </div>
+        <MarqueeRow items={clients} direction="right" />
+        <MarqueeRow items={reversed} direction="left" />
       </div>
       <div className="shell mt-12 text-center">
         <ButtonLink to="/clients" variant="outline" arrow>

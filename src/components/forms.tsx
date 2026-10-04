@@ -414,8 +414,25 @@ export function VacancyForm() {
           rows={4}
           placeholder="Anything else you would like our HR team to know."
         />
-        <p className="mt-2 text-xs text-muted-foreground">
-          Your CV can be attached directly in the WhatsApp chat after sending your details.
+      </div>
+
+      <div className="mt-5">
+        <label className={labelCls} htmlFor="cv">
+          Upload CV / Resume
+        </label>
+        <input
+          id="cv"
+          name="cv"
+          type="file"
+          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          aria-describedby="cv-hint"
+          className={cn(
+            fieldCls,
+            "cursor-pointer py-2.5 file:mr-4 file:cursor-pointer file:rounded-md file:border-0 file:bg-primary-light file:px-4 file:py-2 file:text-xs file:font-bold file:text-primary-dark hover:file:brightness-95",
+          )}
+        />
+        <p id="cv-hint" className="mt-2 text-xs text-muted-foreground">
+          Accepted formats: PDF, DOC, DOCX.
         </p>
       </div>
 

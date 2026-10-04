@@ -1,13 +1,13 @@
 import mechanicalImg from "@/assets/images/services/svc-mechanical.jpg";
 import electricalImg from "@/assets/images/services/svc-electrical.jpg";
-import civilImg from "@/assets/images/services/svc-civil.jpg";
-import surfaceImg from "@/assets/images/services/svc-surface.jpg";
-import equipmentImg from "@/assets/images/services/svc-equipment.jpg";
-import testingImg from "@/assets/images/services/svc-testing.jpg";
+import civilImg from "@/assets/images/services/civil-work.jpeg";
+import surfaceImg from "@/assets/images/services/surface.jpeg";
+import equipmentImg from "@/assets/images/services/man-power.jpeg";
+import testingImg from "@/assets/images/services/testing.jpeg";
 import machineShopAsset from "@/assets/images/services/machine-shop.jpeg";
 import plantMaintenanceAsset from "@/assets/images/projects/pr-refinery-erection.jpeg";
 import ataAsset from "@/assets/images/projects/pr-scaffolding-grid.jpeg";
-import liftingAsset from "@/assets/images/projects/pr-shell-section-site.jpeg";
+import liftingAsset from "@/assets/images/services/heavy-lifting.jpeg";
 
 /** A block of client-provided content: optional heading, paragraphs and a list. */
 export type ServiceBlock = {
