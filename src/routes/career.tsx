@@ -8,6 +8,7 @@ import { PageHero, Reveal, SectionHeading } from "@/components/ui-kit";
 import { vacancies } from "@/data/vacancies";
 import { cn } from "@/lib/utils";
 import { btnStyles } from "@/components/ui-kit";
+import p1 from "@/assets/images/gallery/vacancy-post1.jpeg";
 
 type Partition = "apply" | "vacancies";
 
@@ -46,6 +47,7 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
   if (vacancies.length === 0) {
     return (
       <Reveal>
+        <img src={p1} className="h-100 mt-10 mb-10"></img>
         <div className="rounded-2xl border border-border bg-white/75 p-10 text-center backdrop-blur-sm">
           <Briefcase className="mx-auto size-8 text-primary" />
           <h3 className="mt-4 text-lg">Currently, there are Several vacancies available.</h3>
@@ -61,6 +63,7 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
             Go to Online Apply
           </button>
         </div>
+        
       </Reveal>
     );
   }

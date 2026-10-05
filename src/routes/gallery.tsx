@@ -96,9 +96,9 @@ function GalleryPage() {
                   </button>
                   <figcaption className="flex items-center justify-between gap-3 p-4">
                     <span className="text-sm leading-snug text-muted-foreground">{g.alt}</span>
-                    <span className="shrink-0 rounded-full bg-primary-light px-3 py-1 text-[0.65rem] font-bold tracking-widest text-primary uppercase">
+                    {/* <span className="shrink-0 rounded-full bg-primary-light px-3 py-1 text-[0.65rem] font-bold tracking-widest text-primary uppercase">
                       {g.category}
-                    </span>
+                    </span> */}
                   </figcaption>
                 </figure>
               </Reveal>

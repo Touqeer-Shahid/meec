@@ -27,7 +27,7 @@ import p6 from "@/assets/images/gallery/post6.jpeg";
 import p7 from "@/assets/images/gallery/post8.jpeg";
 import p8 from "@/assets/images/gallery/post9.jpeg";
 
-export const galleryCategories = ["All", "Projects", "Equipment", "HSE", "Team", "Videos"] as const;
+export const galleryCategories = ["All", "Videos"] as const;
 export type GalleryCategory = (typeof galleryCategories)[number];
 
 export type GalleryItem = {
