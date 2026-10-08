@@ -22,6 +22,9 @@ function Field({
   error,
   placeholder,
   autoComplete,
+  min,
+  step,
+  inputMode,
 }: {
   label: string;
   name: string;
@@ -30,6 +33,9 @@ function Field({
   error?: string | undefined;
   placeholder?: string | undefined;
   autoComplete?: string | undefined;
+  min?: number | undefined;
+  step?: number | "any" | undefined;
+  inputMode?: "numeric" | "decimal" | undefined;
 }) {
   return (
     <div>
@@ -42,6 +48,9 @@ function Field({
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        min={min}
+        step={step}
+        inputMode={inputMode}
         aria-invalid={Boolean(error)}
         className={cn(fieldCls, error && "border-destructive")}
       />
@@ -115,10 +124,12 @@ function useWhatsAppForm({
   heading,
   requiredFields,
   messageFields,
+  validate,
 }: {
   heading: string;
   requiredFields: RequiredField[];
   messageFields: MessageFields;
+  validate?: (data: FormData) => Errors;
 }) {
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
@@ -133,6 +144,7 @@ function useWhatsAppForm({
       else if (f.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
         next[f.name] = "Enter a valid email address";
     }
+    if (validate) Object.assign(next, validate(data));
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
@@ -328,6 +340,9 @@ export function VacancyForm() {
       { name: "position", label: "Position applied for" },
       { name: "qualification", label: "Qualification" },
       { name: "experience", label: "Relevant experience" },
+      { name: "expectedSalary", label: "Expected Salary (PKR)" },
+      { name: "joiningDays", label: "Joining Days" },
+      { name: "relocation", label: "Ready to relocate to site based position?" },
     ],
     messageFields: [
       { name: "fullName", label: "Full Name" },
@@ -336,8 +351,28 @@ export function VacancyForm() {
       { name: "position", label: "Position Applied For" },
       { name: "qualification", label: "Qualification" },
       { name: "experience", label: "Experience" },
+      { name: "expectedSalary", label: "Expected Salary (PKR)" },
+      { name: "joiningDays", label: "Joining Days" },
+      { name: "relocation", label: "Ready to relocate to site based position?" },
       { name: "message", label: "Additional Message" },
     ],
+    validate: (data) => {
+      const next: Errors = {};
+      for (const field of [
+        { name: "expectedSalary", label: "Expected Salary (PKR)" },
+        { name: "joiningDays", label: "Joining Days" },
+      ]) {
+        const value = String(data.get(field.name) ?? "").trim();
+        if (value && (!Number.isFinite(Number(value)) || Number(value) < 0)) {
+          next[field.name] = `${field.label} must be a valid non-negative number`;
+        }
+      }
+      const relocation = data.get("relocation");
+      if (relocation && relocation !== "YES" && relocation !== "NO") {
+        next["relocation"] = "Select YES or NO";
+      }
+      return next;
+    },
   });
   const [key, setKey] = useState(0);
 
@@ -405,7 +440,62 @@ export function VacancyForm() {
           placeholder="e.g. 8 years — plant maintenance & shutdowns"
           error={errors["experience"]}
         />
+        <Field
+          label="Expected Salary (PKR)"
+          name="expectedSalary"
+          type="number"
+          min={0}
+          step="any"
+          inputMode="decimal"
+          required
+          placeholder="Enter your expected salary"
+          error={errors["expectedSalary"]}
+        />
+        <Field
+          label="Joining Days"
+          name="joiningDays"
+          type="number"
+          min={0}
+          step="any"
+          inputMode="decimal"
+          required
+          placeholder="e.g. 15"
+          error={errors["joiningDays"]}
+        />
       </div>
+
+      <fieldset
+        className="mt-5 min-w-0"
+        aria-describedby={errors["relocation"] ? "relocation-error" : undefined}
+        aria-invalid={Boolean(errors["relocation"])}
+      >
+        <legend className={labelCls}>
+          Ready to relocate to site based position? <span className="text-accent-dark">*</span>
+        </legend>
+        <div className="flex flex-wrap gap-4">
+          {["YES", "NO"].map((option) => (
+            <label
+              key={option}
+              className="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-foreground"
+            >
+              <input
+                type="radio"
+                name="relocation"
+                value={option}
+                required
+                aria-invalid={Boolean(errors["relocation"])}
+                className="size-4 accent-primary"
+              />
+              {option}
+            </label>
+          ))}
+        </div>
+        {errors["relocation"] && (
+          <p id="relocation-error" className="mt-1.5 text-xs font-semibold text-destructive">
+            {errors["relocation"]}
+          </p>
+        )}
+      </fieldset>
 
       <div className="mt-5">
         <TextAreaField

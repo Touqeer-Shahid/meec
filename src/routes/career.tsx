@@ -8,7 +8,8 @@ import { PageHero, Reveal, SectionHeading } from "@/components/ui-kit";
 import { vacancies } from "@/data/vacancies";
 import { cn } from "@/lib/utils";
 import { btnStyles } from "@/components/ui-kit";
-import p1 from "@/assets/images/gallery/vacancy-post1.jpeg";
+import hiringPoster1 from "@/assets/images/hiring/vacancy-post1.jpeg";
+import hiringPoster2 from "@/assets/images/hiring/vacancy-post2.jpeg";
 
 type Partition = "apply" | "vacancies";
 
@@ -47,7 +48,6 @@ function VacanciesList({ onApply }: { onApply: () => void }) {
   if (vacancies.length === 0) {
     return (
       <Reveal>
-        <img src={p1} className="h-100 mt-10 mb-10"></img>
         <div className="rounded-2xl border border-border bg-white/75 p-10 text-center backdrop-blur-sm">
           <Briefcase className="mx-auto size-8 text-primary" />
           <h3 className="mt-4 text-lg">Currently, there are Several vacancies available.</h3>
@@ -261,6 +261,18 @@ function Opportunities() {
                 title="Current openings"
                 text="Available positions at Masha Allah Engineering Enterprises."
               />
+              <div className="mt-10 grid items-start gap-6 md:grid-cols-2">
+                <img
+                  src={hiringPoster1}
+                  alt="MEEC hiring poster: Boiler Maintenance Professional and QC Inspector"
+                  className="block h-auto w-full min-w-0 max-w-full"
+                />
+                <img
+                  src={hiringPoster2}
+                  alt="MEEC hiring poster: Site Manager for NRL"
+                  className="block h-auto w-full min-w-0 max-w-full"
+                />
+              </div>
               <div className="mt-10">
                 <VacanciesList onApply={() => setActive("apply")} />
               </div>
