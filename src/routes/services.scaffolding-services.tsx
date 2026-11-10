@@ -123,17 +123,10 @@ function ScaffoldingServices() {
           />
           <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
-              MashaAllah Engineering Enterprises offers comprehensive and
-              professional scaffolding services, providing safe, reliable, and
-              efficient access solutions for industrial, commercial, and
-              large-scale engineering projects.
+              MashaAllah Engineering Enterprises offers comprehensive and professional scaffolding services, providing safe, reliable, and efficient access solutions for industrial, commercial, and large-scale engineering projects. We maintain a strong inventory of brand-new, high-quality scaffolding materials, supported by a highly skilled, experienced, and dedicated scaffolding team committed to delivering work in accordance with industry safety standards and project requirements. 
             </p>
             <p>
-              We maintain a strong inventory of brand-new, high-quality
-              scaffolding materials, supported by a highly skilled, experienced,
-              and dedicated scaffolding team committed to delivering work in
-              accordance with industry safety standards and project
-              requirements.
+              Our scaffolding services cover the installation, erection, dismantling, inspection, and maintenance of scaffolding systems, ensuring safe working access for construction, fabrication, maintenance, shutdowns, and turnaround activities. We are proud to have established annual scaffolding service contracts with renowned industrial organizations, including Engro Polymer & Chemicals and National Refinery Limited (NRL). In addition to these long-term contractual engagements, we continuously provide scaffolding services to our other valued clients across various industrial sectors. At MashaAllah Engineering Enterprises, we prioritize workplace safety, material quality, professional supervision, timely execution, and operational efficiency. Our commitment is to deliver dependable scaffolding solutions that meet our clients’ expectations and support smooth, safe, and uninterrupted project operations.
             </p>
           </div>
         </div>
