@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui-kit";
 
 /** Original share links and iframe sources supplied by MEEC, in supplied order. */
 export const facebookVideos = [
-  { id: "4491605777773121", url: "https://www.facebook.com/share/r/19fJdktUz5/", embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4491605777773121%2F&show_text=true&width=267&t=0", width: 267, height: 591 },
+  // { id: "4491605777773121", url: "https://www.facebook.com/share/r/19fJdktUz5/", embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4491605777773121%2F&show_text=true&width=267&t=0", width: 267, height: 591 },
   { id: "1424149583172169", url: "https://www.facebook.com/share/r/18V3Uefm1k/", embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1424149583172169%2F&show_text=true&width=267&t=0", width: 267, height: 591 },
   { id: "3304772833246233", url: "https://www.facebook.com/share/v/1BjUSSWRS3/", embedUrl: "https://www.facebook.com/plugins/video.php?height=317&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3304772833246233%2F&show_text=true&width=560&t=0", width: 560, height: 432 },
   { id: "2513097235825346", url: "https://www.facebook.com/share/r/14v1WTi6pyA/", embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2513097235825346%2F&show_text=true&width=265&t=0", width: 265, height: 591 },
