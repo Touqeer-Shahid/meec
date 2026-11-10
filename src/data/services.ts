@@ -1,4 +1,4 @@
-import mechanicalImg from "@/assets/images/services/svc-mechanical.jpg";
+import mechanicalImg from "@/assets/images/services/svc-mechanical.png";
 import electricalImg from "@/assets/images/services/svc-electrical.jpg";
 import civilImg from "@/assets/images/services/civil-work.jpeg";
 import surfaceImg from "@/assets/images/services/surface.jpeg";
@@ -6,7 +6,7 @@ import equipmentImg from "@/assets/images/services/man-power.jpeg";
 import testingImg from "@/assets/images/services/testing.jpeg";
 import machineShopAsset from "@/assets/images/services/machine-shop.jpeg";
 import plantMaintenanceAsset from "@/assets/images/projects/pr-refinery-erection.jpeg";
-import ataAsset from "@/assets/images/projects/pr-scaffolding-grid.jpeg";
+import ataAsset from "@/assets/images/services/turnaround.png";
 import liftingAsset from "@/assets/images/services/heavy-lifting.jpeg";
 import scaffoldingAsset from "@/assets/images/services/scaffolding-services.jpg";
 
